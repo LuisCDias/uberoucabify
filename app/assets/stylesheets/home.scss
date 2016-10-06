@@ -134,6 +134,7 @@
   }
   .dropdown-text:after{
     border-color: #aaa transparent transparent transparent;
+    margin-right: 1rem;
   }
 }
 
@@ -145,6 +146,9 @@
   margin-top: 10px;
   .nav-tabs{
     border: none;
+    li > a{
+      color: #aaa;
+    }
     li > a[data-toggle=tab]{
       border: none;
       margin-left: 7rem;
@@ -153,5 +157,24 @@
     li > a[data-toggle=tab]:hover{
       font-weight: 800;
     }
+    li.active a{
+      color: #4aa29a;
+      font-weight: 900;
+    }
+    li>a:focus, li>a:hover {
+      background-color: transparent;
+    }
+  }
+  .tab-pane{
+    height: 630px;
+  }
+  .map{
+    position: inherit !important;
+  }
+  .map > div{
+    width: 120% !important;
+  }
+  #cities-tab-content{
+    margin-left: -11.5rem;
   }
 }

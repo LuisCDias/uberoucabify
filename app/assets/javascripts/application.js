@@ -15,8 +15,18 @@
 //= require jquery.easing.min
 //= require bootstrap.min
 //= require theme
+//= require home
 //= require turbolinks
 
 document.addEventListener("turbolinks:load", function() {
   $('[data-toggle="tooltip"]').tooltip();
 });
+
+function async(u, c) {
+  var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+  o.src = '//' + u;
+  if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+  s.parentNode.insertBefore(o, s);
+}
