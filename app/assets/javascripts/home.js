@@ -26,6 +26,7 @@ function showTab(city){
     zoom: 12,
     styles: CUSTOM_MAP_STYLES,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    disableDefaultUI: true
+    mapTypeControl: false,
+    streetViewControl: false
   });
 }
