@@ -107,6 +107,10 @@ p {
   background-color: transparent;
 }
 @media (min-width: 768px) {
+  .logo{
+    -webkit-filter: invert(0);
+    filter: invert(0);
+  }
   .navbar-default {
     background-color: transparent;
     border-color: transparent;
@@ -145,6 +149,10 @@ p {
   .navbar-default.affix .nav > li > a:focus:hover {
     color: #fdcc52;
   }
+  .navbar-default.affix .navbar-header > a > img.logo {
+    -webkit-filter: invert(0.8);
+    filter: invert(0.8);
+  }
 }
 header {
   position: relative;
@@ -153,9 +161,9 @@ header {
   overflow-y: hidden;
   background: url("bg-pattern.png"), #7b4397;
   /* fallback for old browsers */
-  background: url("bg-pattern.png"), -webkit-linear-gradient(to left, #7b4397, #dc2430);
+  background: url("bg-pattern.png"), -webkit-linear-gradient(to left, #4aa29a, #24a9dc);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: url("bg-pattern.png"), linear-gradient(to left, #7b4397, #dc2430);
+  background: url("bg-pattern.png"), linear-gradient(to left, #4aa29a, #24a9dc);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: white;
 }
@@ -320,6 +328,7 @@ section.cta .cta-content h2 {
   section.cta .cta-content h2 {
     font-size: 80px;
   }
+
 }
 section.cta .overlay {
   height: 100%;

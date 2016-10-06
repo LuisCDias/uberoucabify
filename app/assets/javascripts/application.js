@@ -16,3 +16,7 @@
 //= require bootstrap.min
 //= require theme
 //= require turbolinks
+
+document.addEventListener("turbolinks:load", function() {
+  $('[data-toggle="tooltip"]').tooltip();
+});

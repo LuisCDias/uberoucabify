@@ -1,0 +1,2 @@
+postgres: postgres -D vendor/postgresql
+rails: rails s -p 3000
