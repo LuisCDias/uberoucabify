@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a class="page-scroll" href="#features">Começar grátis</a>
+          <a class="page-scroll" href="#calculator-heading">Começar grátis</a>
         </li>
         <li>
           <a class="page-scroll" href="#contact">Contacto</a>
@@ -33,7 +33,7 @@
         <div class="header-content">
           <div class="header-content-inner">
             <h1>UberOuCabify permite fácil e rapidamente comparar a mesma viagem através do serviço Uber e Cabify e escolher a melhor opção!</h1>
-            <a href="#features" class="btn btn-outline btn-xl page-scroll">Começar a usar grátis!</a>
+            <a href="#calculator-heading" class="btn btn-outline btn-xl page-scroll">Começar a usar grátis!</a>
           </div>
         </div>
       </div>
@@ -59,120 +59,56 @@
   </div>
 </header>
 
-<!-- <section id="download" class="download bg-primary text-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <h2 class="section-heading">Discover what all the buzz is about!</h2>
-        <p>Our app is available on any mobile device! Download now to get started!</p>
-        <div class="badges">
-        <a class="badge-link" href="#"><img src="assets/google-play-badge.svg" alt=""></a>
-        <a class="badge-link" href="#"><img src="assets/app-store-badge.svg" alt=""></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-
 <section id="features" class="features">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <div class="section-heading">
+        <div class="section-heading" id="calculator-heading">
           <h2>Compara aqui a tua viagem sem ter de reservar.</h2>
           <p class="text-muted">As nossas estimativas vão ajudar-te a decidir a melhor opção!</p>
           <hr>
         </div>
       </div>
     </div>
-    <!-- phone image -->
-    <div class="row">
-      <div class="col-md-4 results-phone">
-        <div class="device-container">
-          <div class="device-mockup iphone6_plus portrait white">
-            <div class="device">
-              <div class="screen">
-                <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                <!-- Get side by side estimate values for Uber and Cabify inside the screen -->
-                <!-- <img src="assets/uberoucabify.png" class="img-responsive" alt=""> -->
-              </div>
-              <div class="button">
-                <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <!-- map selection -->
-      <div class="col-md-8">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-2 countries-selector">
-              <div class="dropdown disabled">
-                <input class="dropdown-toggle" type="text">
-                <div class="dropdown-text">Portugal</div>
-                <ul class="dropdown-content">
-                  <!-- <li><a href="#">More countries soon</a></li> -->
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-10 cities-tab">
-              <ul class="nav nav-tabs" id="cities-tab-nav" role="tablist">
-                <li role="presentation" class="active">
-                  <a href="#porto" id="porto-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Porto</a>
-                </li>
-                <li role="presentation">
-                  <a href="#lisbon" id="lisbon-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Lisboa</a>
-                </li>
+    <div class="col-md-12">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-2 countries-selector">
+            <div class="dropdown disabled">
+              <input class="dropdown-toggle" type="text">
+              <div class="dropdown-text">Portugal</div>
+              <ul class="dropdown-content">
+                <!-- <li><a href="#">More countries soon</a></li> -->
               </ul>
-              <div class="tab-content" id="cities-tab-content">
-                <div class="tab-pane fade active in" role="tabpanel" id="porto" aria-labelledby="porto-tab">
-                  <div id="porto-map" class="map"></div>
-                </div>
-                <div class="tab-pane fade in" role="tabpanel" id="lisbon" aria-labelledby="lisbon-tab">
-                  <div id="lisbon-map" class="map"></div>
-                </div>
-            </div>
-            <!-- Control buttons -->
-            <input id="place-from-input" class="controls" type="text" placeholder="Introduzir local de início de viagem">
-            <input id="place-to-input" class="controls" type="text" placeholder="Introduzir destino">
-            <a href="#" id="calculate-cost-button" class="btn btn-outline btn-md js-calculate-cost">Estimar a melhor opção</a>
-
-            <!-- <div class="col-md-6">
-              <div class="feature-item">
-                <i class="icon-screen-smartphone text-primary"></i>
-                <h3>Device Mockups</h3>
-                <p class="text-muted">Ready to use HTML/CSS device mockups, no Photoshop required!</p>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="feature-item">
-                <i class="icon-camera text-primary"></i>
-                <h3>Flexible Use</h3>
-                <p class="text-muted">Put an image, video, animation, or anything else in the screen!</p>
-              </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="feature-item">
-                <i class="icon-present text-primary"></i>
-                <h3>Free to Use</h3>
-                <p class="text-muted">As always, this theme is free to download and use for any purpose!</p>
+          <div class="col-md-10 cities-tab">
+            <ul class="nav nav-tabs" id="cities-tab-nav" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#porto" id="porto-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Porto</a>
+              </li>
+              <li role="presentation">
+                <a href="#lisbon" id="lisbon-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Lisboa</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="cities-tab-content">
+              <div class="tab-pane fade active in" role="tabpanel" id="porto" aria-labelledby="porto-tab">
+                <div id="porto-map" class="map"></div>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="feature-item">
-                <i class="icon-lock-open text-primary"></i>
-                <h3>Open Source</h3>
-                <p class="text-muted">Since this theme is MIT licensed, you can use it commercially!</p>
+              <div class="tab-pane fade in" role="tabpanel" id="lisbon" aria-labelledby="lisbon-tab">
+                <div id="lisbon-map" class="map"></div>
               </div>
-            </div> -->
           </div>
+          <!-- Control buttons -->
+          <input id="place-from-input" class="controls" type="text" placeholder="Introduzir local de início de viagem">
+          <input id="place-to-input" class="controls" type="text" placeholder="Introduzir destino">
+          <a href="#" id="calculate-cost-button" class="btn btn-outline btn-md js-calculate-cost">Estimar a melhor opção</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 <section class="cta">
   <div class="cta-content">
@@ -203,7 +139,7 @@
 
 <footer>
   <div class="container">
-    <p>&copy; 2016 Start Bootstrap. All Rights Reserved.</p>
+    <p>&copy; 2016 UberOuCabify. Todos os direitos reservados.</p>
     <ul class="list-inline">
       <li>
         <a href="#">Privacy</a>

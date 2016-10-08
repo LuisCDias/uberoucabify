@@ -140,6 +140,7 @@
 
 .dropdown.disabled{
   pointer-events: none;
+  margin-left: -2.5rem;
   .dropdown-text{
     background-color: transparent;
     border: none;
@@ -162,12 +163,13 @@
   margin-top: 10px;
   .nav-tabs{
     border: none;
+    margin-left: -6rem;
     li > a{
       color: #aaa;
     }
     li > a[data-toggle=tab]{
       border: none;
-      margin-left: 7rem;
+      margin-left: 5rem;
       cursor: pointer;
     }
     li > a[data-toggle=tab]:hover{
@@ -191,7 +193,7 @@
     width: 120% !important;
   }
   #cities-tab-content{
-    margin-left: -11.5rem;
+    margin-left: -20rem;
     margin-top: 35px;
   }
 }
