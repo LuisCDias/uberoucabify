@@ -430,7 +430,7 @@ footer ul li a.active {
   font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
   text-transform: uppercase;
   letter-spacing: 2px;
-  border-radius: 300px;
+  border-radius: 5px;
 }
 .btn-xl {
   padding: 15px 45px;

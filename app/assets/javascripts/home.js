@@ -5,11 +5,34 @@ var LOCATIONS = {
 var CUSTOM_MAP_STYLES = [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}];
 
 document.addEventListener("turbolinks:load", function() {
+  var phonePictureIntervalId = setInterval(function(){
+    $('.picture-container').toggleClass('showing-second-image');
+  }, 1500);
+
+  $('.picture-container')
+  .on('mouseover',function(){
+    console.log("over");
+    clearInterval(phonePictureIntervalId);
+  })
+  .on('mousedown touchstart',function(){
+    $('.picture-container').toggleClass('showing-second-image');
+  })
+
   startGMaps();
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     var city = this.id.split('-')[0];
     showTab(city)
   });
+
+  $('.js-calculate-cost').on('click',function(e){
+    e.preventDefault();
+    var fromInput = document.getElementById('place-from-input');
+    var toInput   = document.getElementById('place-to-input');
+    if(fromInput.value == "" || toInput.value == ""){
+      fromInput.value == "" ? fromInput.focus() : toInput.focus();
+      return false;
+    }
+  })
 });
 
 function startGMaps(){
@@ -36,20 +59,24 @@ function loadPlacesSearch(map){
   // Create the search box and link it to the UI element.
   var fromInput = document.getElementById('place-from-input');
   var toInput   = document.getElementById('place-to-input');
-  var searchBox = new google.maps.places.SearchBox(fromInput);
+  var calculateButton = document.getElementById('calculate-cost-button');
+  var fromSearchBox = new google.maps.places.SearchBox(fromInput);
+  var toSearchBox = new google.maps.places.SearchBox(toInput);
+  // TODO do something with toSearchBox
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(fromInput);
   map.controls[google.maps.ControlPosition.LEFT_TOP].push(toInput);
+  map.controls[google.maps.ControlPosition.LEFT_TOP].push(calculateButton);
 
   // Bias the SearchBox results towards current map's viewport.
   map.addListener('bounds_changed', function() {
-    searchBox.setBounds(map.getBounds());
+    fromSearchBox.setBounds(map.getBounds());
   });
 
   var markers = [];
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
-  searchBox.addListener('places_changed', function() {
-    var places = searchBox.getPlaces();
+  fromSearchBox.addListener('places_changed', function() {
+    var places = fromSearchBox.getPlaces();
 
     if (places.length == 0) {
       return;

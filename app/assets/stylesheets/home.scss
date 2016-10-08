@@ -9,10 +9,26 @@
   filter: invert(0.8);
 }
 
+.picture-container{
+  width: 200%;;
+}
+
+.picture-container.showing-second-image img{
+  transform: translate3d(-50%, 0px, 0px);
+}
+
+.picture-container img {
+  transform: translate3d(0px, 0px, 0px);
+  transition: transform .5s ease-in-out;
+}
+// .picture-container img:hover {
+//     transform: translate3d(0px, -150px, 0px);
+// }
+
+
 /*
 * Dropdown styles
 */
-
 
 .dropdown {
   position: relative;
@@ -166,7 +182,7 @@
     }
   }
   .tab-pane{
-    height: 630px;
+    height: 485px;
   }
   .map{
     position: inherit !important;
@@ -176,6 +192,7 @@
   }
   #cities-tab-content{
     margin-left: -11.5rem;
+    margin-top: 35px;
   }
 }
 
@@ -195,7 +212,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-#place-from-input, #place-to-input {
+#place-from-input, #place-to-input, #calculate-cost-button {
   background-color: #fff;
   font-family: Roboto;
   font-size: 15px;
@@ -227,4 +244,16 @@
 }
 #target {
   width: 345px;
+}
+
+a#calculate-cost-button {
+  border-radius: 3px;
+  margin-top: 10px;
+  background-color: #4aa29a;
+  color: #fff;
+  text-transform: none;
+  letter-spacing: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
