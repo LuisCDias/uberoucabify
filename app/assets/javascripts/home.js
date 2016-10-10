@@ -43,16 +43,17 @@ function togglePhoneImage(){
 }
 
 function startGMaps(){
-  var defaultCity = "porto";
+  var defaultCity = $('.tab-pane.active').attr('id');
   async('maps.googleapis.com/maps/api/js?key=AIzaSyBSuC-_fpdtL7xCl1jWperw8d71Ce9jIeU&libraries=places', function() {
-    showTab(defaultCity);
     directionsService = new google.maps.DirectionsService();
     directionsDisplay = new google.maps.DirectionsRenderer({preserveViewport: true});
-    directionsDisplay.setMap(map);
+    showTab(defaultCity);
   });
 }
 
 function showTab(city){
+  $('#place-from-input').val("");
+  $('#place-to-input').val("");
   $('#'+city+'-map').html("");
   map = new google.maps.Map(document.getElementById(city+'-map'), {
     center: LOCATIONS[city],
@@ -66,6 +67,7 @@ function showTab(city){
     maxZoom: 17,
     panControl: true
   });
+  directionsDisplay.setMap(map);
   loadPlacesSearch();
 }
 
@@ -162,8 +164,6 @@ function calcRoute(start,end) {
   directionsService.route(request, function(result, status) {
     if (status == 'OK') {
       directionsDisplay.setDirections(result);
-
     }
   });
-  map.setZoom(12);
 }
