@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def show
-    @live = false
+    @live = true
   end
 end

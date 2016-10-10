@@ -17,7 +17,7 @@
       <% if @live %>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a class="page-scroll" href="#calculator-heading">Começar grátis</a>
+            <a class="page-scroll" href="#calculator-heading">Experimentar agora</a>
           </li>
           <li>
             <a class="page-scroll" href="#contact">Contacto</a>
@@ -38,7 +38,7 @@
           <div class="header-content-inner">
             <h1>UberOuCabify permite fácil e rapidamente comparar a mesma viagem através do serviço Uber e Cabify e escolher a melhor opção!</h1>
             <% if @live %>
-              <a href="#calculator-heading" class="btn btn-outline btn-xl page-scroll">Começar a usar grátis!</a>
+              <a href="#calculator-heading" class="btn btn-outline btn-xl page-scroll">Experimentar agora</a>
             <% else %>
               <a class="btn btn-outline btn-xl disabled" href="#">Em breve</a>
             <% end %>
@@ -121,8 +121,8 @@
   <section class="cta">
     <div class="cta-content">
       <div class="container">
-        <h2>Stop waiting.<br>Start building.</h2>
-        <a href="#contact" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
+        <h2>É hora de <br>deixar o táxi.</h2>
+        <a href="#calculator-heading" class="btn btn-outline btn-xl page-scroll">Experimentar agora</a>
       </div>
     </div>
     <div class="overlay"></div>
@@ -130,16 +130,22 @@
 
   <section id="contact" class="contact bg-primary">
     <div class="container">
-      <h2>Partilha! Nós <i class="fa fa-heart"></i> novos amigos.</h2>
+      <h2>Partilha o <i class="fa fa-heart"></i> pelo conforto.</h2>
       <ul class="list-inline list-social">
         <li class="social-twitter">
-          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Uber%20ou%20Cabify?%20Testem%20aqui!%20http://uberoucabify.com">
+            <i class="fa fa-twitter"></i>
+          </a>
         </li>
-        <li class="social-facebook">
-          <a href="#"><i class="fa fa-facebook"></i></a>
+        <li class="social-facebook fb-share-button" data-href="http://uberoucabify.com" data-layout="button" data-size="large" data-mobile-iframe="false">
+          <a class="fb-share" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fuberoucabify.com%2F&amp;src=sdkpreparse">
+            <i class="fa fa-facebook"></i>
+          </a>
         </li>
         <li class="social-google-plus">
-          <a href="#"><i class="fa fa-google-plus"></i></a>
+          <a class="plus-share" href="https://plus.google.com/share?url=http://uberoucabify.com">
+            <i class="fa fa-google-plus"></i>
+          </a>
         </li>
       </ul>
     </div>
@@ -147,17 +153,6 @@
 <% end %>
 <footer>
   <div class="container">
-    <p>&copy; 2016 UberOuCabify. Todos os direitos reservados.</p>
-    <!-- <ul class="list-inline">
-      <li>
-        <a href="#">Privacy</a>
-      </li>
-      <li>
-        <a href="#">Terms</a>
-      </li>
-      <li>
-        <a href="#">FAQ</a>
-      </li>
-    </ul> -->
+    <p>&copy; 2016 UberOuCabify. Sem qualquer associação com Uber ou Cabify. Todos os direitos reservados.</p>
   </div>
 </footer>
