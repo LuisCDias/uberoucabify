@@ -12,14 +12,16 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a class="page-scroll" href="#calculator-heading">Começar grátis</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#contact">Contacto</a>
-        </li>
-      </ul>
+      <% if Rails.env == "development" %>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a class="page-scroll" href="#calculator-heading">Começar grátis</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#contact">Contacto</a>
+          </li>
+        </ul>
+      <% end %>
     </div>
     <!-- /.navbar-collapse -->
   </div>
@@ -33,7 +35,11 @@
         <div class="header-content">
           <div class="header-content-inner">
             <h1>UberOuCabify permite fácil e rapidamente comparar a mesma viagem através do serviço Uber e Cabify e escolher a melhor opção!</h1>
-            <a href="#calculator-heading" class="btn btn-outline btn-xl page-scroll">Começar a usar grátis!</a>
+            <% if Rails.env == "development" %>
+              <a href="#calculator-heading" class="btn btn-outline btn-xl page-scroll">Começar a usar grátis!</a>
+            <% else %>
+              <a class="btn btn-outline btn-xl disabled" href="#">Em breve</a>
+            <% end %>
           </div>
         </div>
       </div>
@@ -58,90 +64,90 @@
     </div>
   </div>
 </header>
-
-<section id="features" class="features">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <div class="section-heading" id="calculator-heading">
-          <h2>Compara aqui a tua viagem, sem reservas.</h2>
-          <p class="text-muted">As nossas estimativas vão ajudar-te a decidir a melhor opção.</p>
-          <hr>
-        </div>
-      </div>
-    </div>
-      <!-- map selection -->
-    <div class="col-md-12">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-2 countries-selector">
-            <div class="dropdown disabled">
-              <input class="dropdown-toggle" type="text">
-              <div class="dropdown-text">Portugal</div>
-              <ul class="dropdown-content">
-                <!-- <li><a href="#">More countries soon</a></li> -->
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-10 cities-tab">
-            <ul class="nav nav-tabs" id="cities-tab-nav" role="tablist">
-              <li role="presentation" class="active">
-                <a href="#porto" id="porto-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Porto</a>
-              </li>
-              <li role="presentation">
-                <a href="#lisbon" id="lisbon-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Lisboa</a>
-              </li>
-            </ul>
-            <div class="tab-content" id="cities-tab-content">
-              <div class="tab-pane fade active in" role="tabpanel" id="porto" aria-labelledby="porto-tab">
-                <div id="porto-map" class="map"></div>
-              </div>
-              <div class="tab-pane fade in" role="tabpanel" id="lisbon" aria-labelledby="lisbon-tab">
-                <div id="lisbon-map" class="map"></div>
-              </div>
-            </div>
-            <!-- Control buttons -->
-            <input id="place-from-input" class="controls" type="text" placeholder="Introduzir local de início de viagem">
-            <input id="place-to-input" class="controls" type="text" placeholder="Introduzir destino">
-            <a href="#" id="calculate-cost-button" class="btn btn-outline btn-md js-calculate-cost disabled">Estimar a melhor opção</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta">
-  <div class="cta-content">
+<% if Rails.env == "development" %>
+  <section id="features" class="features">
     <div class="container">
-      <h2>Stop waiting.<br>Start building.</h2>
-      <a href="#contact" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="section-heading" id="calculator-heading">
+            <h2>Compara aqui a tua viagem, sem reservas.</h2>
+            <p class="text-muted">As nossas estimativas vão ajudar-te a decidir a melhor opção.</p>
+            <hr>
+          </div>
+        </div>
+      </div>
+        <!-- map selection -->
+      <div class="col-md-12">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-2 countries-selector">
+              <div class="dropdown disabled">
+                <input class="dropdown-toggle" type="text">
+                <div class="dropdown-text">Portugal</div>
+                <ul class="dropdown-content">
+                  <!-- <li><a href="#">More countries soon</a></li> -->
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-10 cities-tab">
+              <ul class="nav nav-tabs" id="cities-tab-nav" role="tablist">
+                <li role="presentation" class="active">
+                  <a href="#porto" id="porto-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Porto</a>
+                </li>
+                <li role="presentation">
+                  <a href="#lisbon" id="lisbon-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Lisboa</a>
+                </li>
+              </ul>
+              <div class="tab-content" id="cities-tab-content">
+                <div class="tab-pane fade active in" role="tabpanel" id="porto" aria-labelledby="porto-tab">
+                  <div id="porto-map" class="map"></div>
+                </div>
+                <div class="tab-pane fade in" role="tabpanel" id="lisbon" aria-labelledby="lisbon-tab">
+                  <div id="lisbon-map" class="map"></div>
+                </div>
+              </div>
+              <!-- Control buttons -->
+              <input id="place-from-input" class="controls" type="text" placeholder="Introduzir local de início de viagem">
+              <input id="place-to-input" class="controls" type="text" placeholder="Introduzir destino">
+              <a href="#" id="calculate-cost-button" class="btn btn-outline btn-md js-calculate-cost disabled">Estimar a melhor opção</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="overlay"></div>
-</section>
+  </section>
 
-<section id="contact" class="contact bg-primary">
-  <div class="container">
-    <h2>Partilha! Nós <i class="fa fa-heart"></i> novos amigos.</h2>
-    <ul class="list-inline list-social">
-      <li class="social-twitter">
-        <a href="#"><i class="fa fa-twitter"></i></a>
-      </li>
-      <li class="social-facebook">
-        <a href="#"><i class="fa fa-facebook"></i></a>
-      </li>
-      <li class="social-google-plus">
-        <a href="#"><i class="fa fa-google-plus"></i></a>
-      </li>
-    </ul>
-  </div>
-</section>
+  <section class="cta">
+    <div class="cta-content">
+      <div class="container">
+        <h2>Stop waiting.<br>Start building.</h2>
+        <a href="#contact" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
+      </div>
+    </div>
+    <div class="overlay"></div>
+  </section>
 
+  <section id="contact" class="contact bg-primary">
+    <div class="container">
+      <h2>Partilha! Nós <i class="fa fa-heart"></i> novos amigos.</h2>
+      <ul class="list-inline list-social">
+        <li class="social-twitter">
+          <a href="#"><i class="fa fa-twitter"></i></a>
+        </li>
+        <li class="social-facebook">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+        </li>
+        <li class="social-google-plus">
+          <a href="#"><i class="fa fa-google-plus"></i></a>
+        </li>
+      </ul>
+    </div>
+  </section>
+<% end %>
 <footer>
   <div class="container">
     <p>&copy; 2016 UberOuCabify. Todos os direitos reservados.</p>
-    <ul class="list-inline">
+    <!-- <ul class="list-inline">
       <li>
         <a href="#">Privacy</a>
       </li>
@@ -151,6 +157,6 @@
       <li>
         <a href="#">FAQ</a>
       </li>
-    </ul>
+    </ul> -->
   </div>
 </footer>
