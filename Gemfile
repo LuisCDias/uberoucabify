@@ -29,6 +29,10 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'foreman'
 
+gem 'figaro'
+
+gem "uber-sdk", require: "uber"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
