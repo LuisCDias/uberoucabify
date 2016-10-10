@@ -34,7 +34,8 @@ document.addEventListener("turbolinks:load", function() {
       fromInput.value == "" ? fromInput.focus() : toInput.focus();
       return false;
     }
-    calcRoute(fromInput.value,toInput.value)
+    calcRoute(fromInput.value,toInput.value);
+    launchResultsModal();
   })
 
   $('.fb-share, .twitter-share-button, .plus-share').click(function(e) {
@@ -172,4 +173,10 @@ function calcRoute(start,end) {
       directionsDisplay.setDirections(result);
     }
   });
+}
+
+function launchResultsModal(){
+  setTimeout(function(){
+    $('#results').show();
+  },500);
 }

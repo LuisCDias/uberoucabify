@@ -21,10 +21,23 @@
   transform: translate3d(0px, 0px, 0px);
   transition: transform .5s ease-in-out;
 }
-// .picture-container img:hover {
-//     transform: translate3d(0px, -150px, 0px);
-// }
 
+#results{
+  display: none;
+  height: 500px;
+  position: absolute;
+  width: 75%;
+  left: 150px;
+  top: 110px;
+  z-index: 1;
+  background-color:rgba(255, 255, 255, 0.9);
+  i.fa-spin{
+    color: #ccc;
+    font-size: 602%;
+    margin-top: 200px;
+    margin-left: 45%;
+  }
+}
 
 /*
 * Dropdown styles
@@ -35,6 +48,7 @@
   display: inline-block;
   text-align: left;
   width: 132px;
+  margin-top: -15px;
 }
 
 .dropdown-text {
@@ -69,17 +83,7 @@
 
 .dropdown-toggle {
   font-size: 0;
-  z-index: 1;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
   border: none;
-  padding: 0;
-  margin: 0 0 0 1px;
-  background: transparent;
-  text-indent: -10px;
-  height: 34px;
-  width: 100%;
 }
 
 .dropdown-toggle:focus {
@@ -100,7 +104,6 @@
   opacity: 0;
   visibility:hidden;
   border-radius: 3px;
-  text-indent: 10px;
   line-height: 32px;
   background-color: #eee;
   border: 1px solid #ccc;
@@ -140,7 +143,6 @@
 
 .dropdown.disabled{
   pointer-events: none;
-  margin-left: -2.5rem;
   .dropdown-text{
     background-color: transparent;
     border: none;
@@ -163,7 +165,6 @@
   margin-top: 10px;
   .nav-tabs{
     border: none;
-    margin-left: -6rem;
     li > a{
       color: #aaa;
     }
@@ -189,16 +190,20 @@
   .map{
     position: inherit !important;
   }
-  .map > div{
-    width: 120% !important;
-  }
   #cities-tab-content{
-    margin-left: -20rem;
     margin-top: 35px;
   }
 }
 
-
+@media (min-width: 768px){
+  .cities-tab{
+    .map > div{
+      width: 120% !important;
+    }
+    #cities-tab-content{
+    }
+  }
+}
 /*
 * Map places search styles
 */

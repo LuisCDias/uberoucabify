@@ -81,17 +81,19 @@
       <div class="col-md-12">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-2 countries-selector">
-              <div class="dropdown disabled">
-                <input class="dropdown-toggle" type="text">
-                <div class="dropdown-text">Portugal</div>
-                <ul class="dropdown-content">
-                  <!-- <li><a href="#">More countries soon</a></li> -->
-                </ul>
-              </div>
+            <!-- Results comparison div -->
+            <div id="results">
+              <i class="fa fa-circle-o-notch fa-spin fa-3x" aria-hidden="true"></i>
             </div>
-            <div class="col-md-10 cities-tab">
+            <div class="cities-tab">
               <ul class="nav nav-tabs" id="cities-tab-nav" role="tablist">
+                <li class="dropdown disabled hidden-xs">
+                  <input class="dropdown-toggle" type="text">
+                  <div class="dropdown-text">Portugal</div>
+                  <div class="dropdown-content">
+                    <!-- <li><a href="#">More countries soon</a></li> -->
+                  </div>
+                </li>
                 <li role="presentation" class="active">
                   <a href="#porto" id="porto-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Porto</a>
                 </li>
