@@ -27,15 +27,15 @@
   height: 500px;
   position: absolute;
   width: 75%;
-  left: 150px;
+  left: 40px;
   top: 110px;
   z-index: 1;
   background-color:rgba(255, 255, 255, 0.9);
   i.fa-spin{
     color: #ccc;
-    font-size: 602%;
+    font-size: 500%;
     margin-top: 200px;
-    margin-left: 45%;
+    margin-left: 40%;
   }
 }
 
@@ -184,11 +184,15 @@
       background-color: transparent;
     }
   }
+
   .tab-pane{
     height: 485px;
   }
   .map{
     position: inherit !important;
+  }
+  .map > div{
+    width: 90% !important;
   }
   #cities-tab-content{
     margin-top: 35px;
@@ -198,11 +202,19 @@
 @media (min-width: 768px){
   .cities-tab{
     .map > div{
-      width: 120% !important;
+      width: 100% !important;
     }
     #cities-tab-content{
     }
   }
+
+
+#results{
+  left: 150px;
+  i.fa-spin{
+    margin-left: 45%;
+  }
+}
 }
 /*
 * Map places search styles
