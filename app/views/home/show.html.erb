@@ -2,9 +2,11 @@
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-      </button>
+      <% if @live %>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+        </button>
+      <% end %>
       <a class="navbar-brand page-scroll" href="#page-top">
         <%= image_tag "logo_white.png", alt: "UberOuCabify Logo", class: 'logo' %>
       </a>
@@ -12,7 +14,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <% if Rails.env == "development" %>
+      <% if @live %>
         <ul class="nav navbar-nav navbar-right">
           <li>
             <a class="page-scroll" href="#calculator-heading">Começar grátis</a>
@@ -35,7 +37,7 @@
         <div class="header-content">
           <div class="header-content-inner">
             <h1>UberOuCabify permite fácil e rapidamente comparar a mesma viagem através do serviço Uber e Cabify e escolher a melhor opção!</h1>
-            <% if Rails.env == "development" %>
+            <% if @live %>
               <a href="#calculator-heading" class="btn btn-outline btn-xl page-scroll">Começar a usar grátis!</a>
             <% else %>
               <a class="btn btn-outline btn-xl disabled" href="#">Em breve</a>
@@ -63,7 +65,7 @@
     </div>
   </div>
 </header>
-<% if Rails.env == "development" %>
+<% if @live %>
   <section id="features" class="features">
     <div class="container">
       <div class="row">
