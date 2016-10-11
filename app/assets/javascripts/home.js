@@ -55,6 +55,19 @@ document.addEventListener("turbolinks:load", function() {
     $('#results > .close').click();
     clearMapdata();
   })
+  .on('change','input[name=results]',function(){
+    var selected = $('input[name=results]:checked');
+    // Text should announce as winner
+    if(selected.val() == selected.data('winner')){
+      $('.result-information > #winner').html("Deves escolher ir de <strong>" + selected.val().capitalizeFirstLetter() + "</strong>");
+      $('.result-information > #price').html(selected.data('estimate'));
+    }
+    else{
+      $('.result-information > #winner').html("É melhor ir de <strong>" + selected.val().capitalizeFirstLetter() + "</strong> que de táxi.");
+      $('.result-information > #price').html(selected.data('estimate'));
+    }
+    // Price is set independently of winner
+  });
 
 
   $('.fb-share, .twitter-share-button, .plus-share').click(function(e) {
@@ -205,12 +218,14 @@ function calcRoute(start,end) {
 
 function launchResultsModal(start,end){
  $('#results').show();
-  console.log("slat:" + slat + "slon:" + slon + "dlat:" + dlat + "dlon:" + dlon);
   var data = { slat: slat, slon: slon, dlat: dlat, dlon: dlon };
   $.post('/results',data)
   .done(function(result){
     $('#results > .fa-spin').hide();
     showResult(result);
+    console.log(result);
+    $('#result-uber').data(result.uber).data('winner',result.winner.name);
+    $('#result-cabify').data(result.cabify).data('winner',result.winner.name);
   })
   .fail(function(){
 

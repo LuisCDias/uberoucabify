@@ -23,6 +23,7 @@ class ResultsController < ApplicationController
       end_latitude: params[:dlat],
       end_longitude: params[:dlon]
     ).first
+    result.distance *= 1.61
 
     @result = {
       uber: uber_results(result),
@@ -34,7 +35,7 @@ class ResultsController < ApplicationController
         winner: {
           name: "cabify",
           estimate: @result[:cabify][:estimate],
-          distance: @result[:uber][:distance],
+          distance: @result[:uber][:distance] ,
           km_fare: cabify_fare(@result[:uber][:distance]),
           time_fare: CABIFY_TIME_FARE,
           base_fare: CABIFY_BASE_FARE
@@ -78,5 +79,9 @@ class ResultsController < ApplicationController
 
   def cabify_fare(distance)
     distance > 15 ? CABIFY_MORE_THAN_15_FARE : CABIFY_LESS_THAN_15_FARE
+  end
+
+  def distance_in_km(distance)
+    distance * 1.61
   end
 end
