@@ -11,17 +11,23 @@ var dlon;
 
 document.addEventListener("turbolinks:load", function() {
   var phonePictureIntervalId = setInterval(togglePhoneImage, 1500);
+  var firstAnimationComplete = false;
   setTimeout(function(){
     clearInterval(phonePictureIntervalId);
-  }, 3000);
+    firstAnimationComplete = true;
+  }, 3250);
 
   $('.picture-container')
   .on('mouseover',function(){
-    togglePhoneImage();
-    phonePictureIntervalId = setInterval(togglePhoneImage, 1500);
+    if(firstAnimationComplete){
+      togglePhoneImage();
+      phonePictureIntervalId = setInterval(togglePhoneImage, 1500);
+    }
   })
   .on('mouseout',function(){
-    clearInterval(phonePictureIntervalId);
+    if(firstAnimationComplete){
+      clearInterval(phonePictureIntervalId);
+    }
   });
 
   startGMaps();
@@ -65,7 +71,7 @@ document.addEventListener("turbolinks:load", function() {
       $('.result-information > #winner').html("Deves escolher ir de <strong>" + name + "</strong>");
     }
     else{
-      $('.result-information > #winner').html("É melhor ir de <strong>" + name + "</strong> que de táxi.");
+      $('.result-information > #winner').html("É melhor ir de <strong>" + name + "</strong> do que de táxi.");
     }
     $('.result-information > #new-account-text a').attr('href',selected.data('url'))
     $('.result-information > #price').html(selected.data('estimate'));

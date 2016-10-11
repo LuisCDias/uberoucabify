@@ -75,7 +75,7 @@ class ResultsController < ApplicationController
   end
 
   def cabify_results(result)
-    estimate = (result.distance * cabify_fare(result.distance)).round(2)
+    estimate = [(result.distance * cabify_fare(result.distance)).round(2),3.5].max
     {
       distance: result.distance,
       average_estimate: estimate,
@@ -85,7 +85,7 @@ class ResultsController < ApplicationController
   end
 
   def cabify_fare(distance)
-    distance > 15 ? CABIFY_MORE_THAN_15_FARE : CABIFY_LESS_THAN_15_FARE
+    distance >  15 ? CABIFY_MORE_THAN_15_FARE : CABIFY_LESS_THAN_15_FARE
   end
 
   def distance_in_km(distance)
