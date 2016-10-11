@@ -58,6 +58,15 @@ class ResultsController < ApplicationController
         }
       )
     end
+
+    Result.create({
+      estimate: @result[:winner][:estimate],
+      distance: @result[:winner][:distance],
+      start_latitude: params[:slat],
+      start_longitude: params[:slon],
+      end_latitude: params[:dlat],
+      end_longitude: params[:dlon]
+    })
     render json: @result
   end
 

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  estimate: MyString
+  distance: 1.5
+  average_estimate: 1.5
+  start_latitude: MyString
+  start_longitude: MyString
+  end_latitude: MyString
+  end_longitude: MyString
+
+two:
+  estimate: MyString
+  distance: 1.5
+  average_estimate: 1.5
+  start_latitude: MyString
+  start_longitude: MyString
+  end_latitude: MyString
+  end_longitude: MyString
