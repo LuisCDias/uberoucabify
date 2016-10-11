@@ -27,7 +27,8 @@ document.addEventListener("turbolinks:load", function() {
   startGMaps();
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     var city = this.id.split('-')[0];
-    showTab(city)
+    $('#results > .close').click();
+    showTab(city);
   });
 
   $('.js-calculate-cost').on('click',function(e){
@@ -50,6 +51,7 @@ document.addEventListener("turbolinks:load", function() {
     $('.result-information > #price').html("");
     $('#results > .result-switcher').hide();
     $('#results > .result-information').hide();
+    $('#results > .additional-information').hide();
   })
   .on('click','#new-search',function(){
     $('#results > .close').click();
