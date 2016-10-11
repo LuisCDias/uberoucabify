@@ -1,0 +1,25 @@
+<div id="results">
+  <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <i class="fa fa-circle-o-notch fa-spin fa-3x" aria-hidden="true"></i>
+  <div class="result-switcher">
+    <p class="fieldset">
+      <input type="radio" name="results" value="uber" id="result-uber" checked>
+      <label for="result-uber">Uber</label>
+      <input type="radio" name="results" value="cabify" id="result-cabify">
+      <label for="result-cabify">Cabify</label>
+      <span class="switch"></span>
+    </p>
+  </div>
+  <div class="result-information">
+    <h2 id="winner" class="text-center"></h2>
+    <h1 id="price" class="text-center"></h1>
+  </div>
+  <div class="additional-information">
+    <div class="col-md-8 hidden-xs">
+      <p id="disclaimer">Os dados têm base no percurso sugerido pelo Google Maps e as estimativas calculadas directamente dos serviços Uber e Cabify. O resultado final pode variar!</p>
+    </div>
+    <div class="col-md-4">
+      <button id="new-search" class="btn btn-default">Fazer nova pesquisa</button>
+    </div>
+  </div>
+</div>

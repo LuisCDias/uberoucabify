@@ -30,3 +30,7 @@ function async(u, c) {
   if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
   s.parentNode.insertBefore(o, s);
 }
+
+String.prototype.capitalizeFirstLetter = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+}

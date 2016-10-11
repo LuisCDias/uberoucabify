@@ -1,8 +1,13 @@
 class ResultsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  CABIFY_LESS_THAN_15_MULTIPLIER = 1.12
-  CABIFY_MORE_THAN_15_MULTIPLIER = 1.05
+  CABIFY_LESS_THAN_15_FARE = 1.12
+  CABIFY_MORE_THAN_15_FARE = 1.05
+  CABIFY_TIME_FARE = 0
+  CABIFY_BASE_FARE = 0
+  UBER_KM_FARE = 0.65
+  UBER_TIME_FARE = 0.1
+  UBER_BASE_FARE = 1
 
   def create
     client = Uber::Client.new do |config|
@@ -24,10 +29,28 @@ class ResultsController < ApplicationController
       cabify: cabify_results(result),
     }
 
-    if @result[:uber][:average_estimate] > @result[:cabify][:estimate]
-      @result.merge!({winner: "cabify"})
+    if @result[:uber][:average_estimate] > @result[:cabify][:average_estimate]
+      @result.merge!(
+        winner: {
+          name: "cabify",
+          estimate: @result[:cabify][:estimate],
+          distance: @result[:uber][:distance],
+          km_fare: cabify_fare(@result[:uber][:distance]),
+          time_fare: CABIFY_TIME_FARE,
+          base_fare: CABIFY_BASE_FARE
+        }
+      )
     else
-      @result.merge!({winner: "uber"})
+      @result.merge!(
+        winner: {
+          name: "uber",
+          estimate: @result[:uber][:estimate],
+          distance: @result[:uber][:distance],
+          km_fare: UBER_KM_FARE,
+          time_fare: UBER_TIME_FARE,
+          base_fare: UBER_BASE_FARE
+        }
+      )
     end
     render json: @result
   end
@@ -45,10 +68,15 @@ class ResultsController < ApplicationController
   end
 
   def cabify_results(result)
-    estimate = result.distance * (result.distance > 15 ? CABIFY_MORE_THAN_15_MULTIPLIER : CABIFY_LESS_THAN_15_MULTIPLIER)
+    estimate = (result.distance * cabify_fare(result.distance)).round(2)
     {
       distance: result.distance,
-      estimate: estimate
+      average_estimate: estimate,
+      estimate: "#{estimate} €"
     }
+  end
+
+  def cabify_fare(distance)
+    distance > 15 ? CABIFY_MORE_THAN_15_FARE : CABIFY_LESS_THAN_15_FARE
   end
 end

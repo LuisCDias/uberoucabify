@@ -38,9 +38,24 @@ document.addEventListener("turbolinks:load", function() {
       fromInput.value == "" ? fromInput.focus() : toInput.focus();
       return false;
     }
+    $('#results > .fa-spin').show();
     calcRoute(fromInput.value,toInput.value);
     launchResultsModal(fromInput.value,toInput.value);
+  });
+
+  $('#results')
+  .on('click','.close',function(){
+    $('#results').hide();
+    $('.result-information > #winner').html("");
+    $('.result-information > #price').html("");
+    $('#results > .result-switcher').hide();
+    $('#results > .result-information').hide();
   })
+  .on('click','#new-search',function(){
+    $('#results > .close').click();
+    clearMapdata();
+  })
+
 
   $('.fb-share, .twitter-share-button, .plus-share').click(function(e) {
     e.preventDefault();
@@ -189,17 +204,36 @@ function calcRoute(start,end) {
 }
 
 function launchResultsModal(start,end){
-  setTimeout(function(){
-    $('#results').show();
-    console.log("slat:" + slat + "slon:" + slon + "dlat:" + dlat + "dlon:" + dlon);
-    var data = { slat: slat, slon: slon, dlat: dlat, dlon: dlon };
-    $.post('/results',data)
-    .done(function(){
+ $('#results').show();
+  console.log("slat:" + slat + "slon:" + slon + "dlat:" + dlat + "dlon:" + dlon);
+  var data = { slat: slat, slon: slon, dlat: dlat, dlon: dlon };
+  $.post('/results',data)
+  .done(function(result){
+    $('#results > .fa-spin').hide();
+    showResult(result);
+  })
+  .fail(function(){
 
-    })
-    .fail(function(){
+  })
+}
 
-    })
+function showResult(result){
+  $("#result-"+result.winner.name).prop("checked", true);
+  $('.result-information > #winner').html("Deves escolher ir de <strong>" + result.winner.name.capitalizeFirstLetter() + "</strong>");
+  $('.result-information > #price').html(result.winner.estimate);
+  $('#results > .result-switcher').show();
+  $('#results > .result-information').show();
+  $('#results > .additional-information').show();
+}
 
-  },500);
+function clearMapdata(){
+  var fromInput = document.getElementById('place-from-input');
+  var toInput   = document.getElementById('place-to-input');
+  fromInput.value = ""
+  toInput.value = ""
+
+  for(var key in markers){
+    markers[key].setMap(null);
+  }
+  directionsDisplay.setMap(null);
 }
