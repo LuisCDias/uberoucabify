@@ -2,8 +2,8 @@
   display: none;
   height: 500px;
   position: absolute;
-  width: 75%;
-  left: 40px;
+  width: 84.5%;
+  left: 27px;
   top: 115px;
   z-index: 1;
   background-color:rgba(255, 255, 255, 0.9);
@@ -24,7 +24,7 @@
 
 @media (min-width: 768px){
   #results{
-    left: 150px;
+    left: 105px;
     i.fa-spin{
       margin-left: 45%;
     }
@@ -96,7 +96,10 @@
 
 .result-information{
   display: none;
-
+  #new-account-text{
+    font-size: 13px;
+    text-align: center;
+  }
   #price{
     color: rgba(132, 206, 66, 1);
     font-size: 600%;

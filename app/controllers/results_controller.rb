@@ -39,6 +39,7 @@ class ResultsController < ApplicationController
           name: "cabify",
           estimate: @result[:cabify][:estimate],
           distance: @result[:uber][:distance] ,
+          url: @result[:cabify][:url],
           km_fare: cabify_fare(@result[:uber][:distance]),
           time_fare: CABIFY_TIME_FARE,
           base_fare: CABIFY_BASE_FARE
@@ -50,6 +51,7 @@ class ResultsController < ApplicationController
           name: "uber",
           estimate: @result[:uber][:estimate],
           distance: @result[:uber][:distance],
+          url: @result[:uber][:url],
           km_fare: UBER_KM_FARE,
           time_fare: UBER_TIME_FARE,
           base_fare: UBER_BASE_FARE
@@ -67,7 +69,8 @@ class ResultsController < ApplicationController
       low_estimate: result.low_estimate,
       high_estimate: result.high_estimate,
       average_estimate: (result.high_estimate + result.low_estimate) / 2,
-      estimate: result.estimate
+      estimate: result.estimate,
+      url: "https://www.uber.com/invite/gbnl0"
     }
   end
 
@@ -76,7 +79,8 @@ class ResultsController < ApplicationController
     {
       distance: result.distance,
       average_estimate: estimate,
-      estimate: "#{estimate} €"
+      estimate: "#{estimate} €",
+      url: "https://cabify.com/i/uberoucabify"
     }
   end
 

@@ -60,14 +60,15 @@ document.addEventListener("turbolinks:load", function() {
   .on('change','input[name=results]',function(){
     var selected = $('input[name=results]:checked');
     // Text should announce as winner
+    var name = selected.val().capitalizeFirstLetter();
     if(selected.val() == selected.data('winner')){
-      $('.result-information > #winner').html("Deves escolher ir de <strong>" + selected.val().capitalizeFirstLetter() + "</strong>");
-      $('.result-information > #price').html(selected.data('estimate'));
+      $('.result-information > #winner').html("Deves escolher ir de <strong>" + name + "</strong>");
     }
     else{
-      $('.result-information > #winner').html("É melhor ir de <strong>" + selected.val().capitalizeFirstLetter() + "</strong> que de táxi.");
-      $('.result-information > #price').html(selected.data('estimate'));
+      $('.result-information > #winner').html("É melhor ir de <strong>" + name + "</strong> que de táxi.");
     }
+    $('.result-information > #new-account-text a').attr('href',selected.data('url'))
+    $('.result-information > #price').html(selected.data('estimate'));
     // Price is set independently of winner
   });
 
@@ -238,14 +239,19 @@ function launchResultsModal(start,end){
 function showResult(result){
   $("#result-"+result.winner.name).prop("checked", true);
   $('.result-information > #winner').html("Deves escolher ir de <strong>" + result.winner.name.capitalizeFirstLetter() + "</strong>");
+  $('.result-information > #new-account-text a').attr('href',result.winner.url)
   $('.result-information > #price').html(result.winner.estimate);
   $('#results > .result-switcher').show();
   $('#results > .result-information').show();
+  $('.result-information > #new-account-text').show();
   $('#results > .additional-information').show();
 }
 
 function showNoResults(){
-
+  $('.result-information > #winner').html("Não foi encontrado nenhum resultado. Tenta novamente.");
+  $('#results > .result-information').show();
+  $('.result-information > #new-account-text').hide();
+  $('#results > .additional-information').show();
 }
 
 function clearMapdata(){
@@ -258,4 +264,16 @@ function clearMapdata(){
     markers[key].setMap(null);
   }
   directionsDisplay.setMap(null);
+}
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
 }

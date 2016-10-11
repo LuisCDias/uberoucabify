@@ -3,9 +3,9 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <% if @live %>
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-        </button>
+        </button> -->
       <% end %>
       <a class="navbar-brand page-scroll" href="#page-top">
         <%= image_tag "logo_white.png", alt: "UberOuCabify Logo", class: 'logo' %>
@@ -19,9 +19,9 @@
           <li>
             <a class="page-scroll" href="#calculator-heading">Experimentar agora</a>
           </li>
-          <li>
+          <!-- <li>
             <a class="page-scroll" href="#contact">Contacto</a>
-          </li>
+          </li> -->
         </ul>
       <% end %>
     </div>
@@ -36,7 +36,7 @@
       <div class="col-sm-7">
         <div class="header-content">
           <div class="header-content-inner">
-            <h1>UberOuCabify permite fácil e rapidamente comparar a mesma viagem através do serviço Uber e Cabify e escolher a melhor opção!</h1>
+            <h1>UberOuCabify compara a mesma viagem através do serviço Uber e Cabify e ajuda-te a decidir a melhor opção.</h1>
             <% if @live %>
               <a href="#calculator-heading" class="btn btn-outline btn-xl page-scroll">Experimentar agora</a>
             <% else %>
@@ -79,7 +79,7 @@
       </div>
         <!-- map selection -->
       <div class="col-md-12">
-        <div class="container-fluid" style="display: flex;">
+        <div class="container-fluid">
           <div class="row">
             <!-- Results comparison div -->
             <%= render "results" %>
@@ -122,7 +122,9 @@
     <div class="cta-content">
       <div class="container">
         <h2>É hora de <br>deixar o táxi.</h2>
-        <a href="#calculator-heading" class="btn btn-outline btn-xl page-scroll">Experimentar agora</a>
+        <p class="create-account-text">Cria conta num dos serviços e tem uma viagem grátis com o nosso código promocional. </p>
+        <a href="https://www.uber.com/invite/gbnl0" target="_blank" class="btn btn-outline btn-xl page-scroll">Criar conta Uber</a>
+        <a href="https://cabify.com/i/uberoucabify" target="_blank" class="btn btn-outline btn-xl page-scroll">Criar conta Cabify</a>
       </div>
     </div>
     <div class="overlay"></div>
