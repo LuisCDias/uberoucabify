@@ -23,6 +23,9 @@ class ResultsController < ApplicationController
       end_latitude: params[:dlat],
       end_longitude: params[:dlon]
     ).first
+
+    raise "No results found" unless result.present?
+
     result.distance *= 1.61
 
     @result = {

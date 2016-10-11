@@ -228,7 +228,8 @@ function launchResultsModal(start,end){
     $('#result-cabify').data(result.cabify).data('winner',result.winner.name);
   })
   .fail(function(){
-
+    $('#results > .fa-spin').hide();
+    showNoResults();
   })
 }
 
@@ -239,6 +240,10 @@ function showResult(result){
   $('#results > .result-switcher').show();
   $('#results > .result-information').show();
   $('#results > .additional-information').show();
+}
+
+function showNoResults(){
+
 }
 
 function clearMapdata(){
